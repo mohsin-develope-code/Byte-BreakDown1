@@ -26,9 +26,9 @@ app.use(CookieParser());
 app.use(express.json());
 app.use('/uploads', express.static(__dirname + '/uploads') )
 app.use(cors({ 
-              origin: 'http://localhost:5173',  // Specify your frontend's URL
+              origin: 'https://byte-breakdown1-client.onrender.com/',  
               methods: ['GET', 'POST', 'PUT', 'DELETE'],
-              credentials: true,  // If you are using cookies
+              credentials: true, 
         }));
 
 
