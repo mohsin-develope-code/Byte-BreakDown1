@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 8080;
 
 
 
-mongoose.connect("mongodb+srv://mosn0078600:OPzpLvXBV4af13kW@cluster0.dsq30.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(process.env.MONGO_URL)
         .then(()=> console.log("Database Connect..."))
         .catch((err)=> console.log("Database Not Connected", err))
 
