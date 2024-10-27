@@ -23,7 +23,7 @@ const NavBar = () => {
 
 
   const handleLogout = async () => {
-    const response = await fetch('http://localhost:8080/logout', {
+    const response = await fetch('https://byte-breakdown1.onrender.com/logout', {
                                   method: "Post",
                                   credentials: 'include',
                                 })

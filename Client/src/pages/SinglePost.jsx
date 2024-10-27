@@ -19,7 +19,7 @@ const SinglePost = () => {
       setLoading(true);
 
       try {
-        const response = await fetch(`http://localhost:8080/user/post/${id}`,
+        const response = await fetch(`https://byte-breakdown1.onrender.com/user/post/${id}`,
                                      { method: "GET", 
                                        credentials:'include',
                                      })

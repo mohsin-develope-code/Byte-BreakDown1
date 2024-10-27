@@ -17,7 +17,7 @@ const UserPostList = () => {
       const fetchPosts = async () => {
   
         try {
-          const response = await fetch("http://localhost:8080/user/user-posts", 
+          const response = await fetch("https://byte-breakdown1.onrender.com/user/user-posts", 
                                       { method: "GET", 
                                         credentials:'include',});
           const result = await response.json();

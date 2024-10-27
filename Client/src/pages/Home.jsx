@@ -19,7 +19,7 @@ const Home = () => {
       setLoading(true)
 
       try {
-        const response = await fetch("http://localhost:8080/user/all-post",
+        const response = await fetch("https://byte-breakdown1.onrender.com/user/all-post",
                                      { method: "GET", 
                                        credentials:'include',
                                     })

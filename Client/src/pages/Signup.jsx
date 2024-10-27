@@ -26,7 +26,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/signup", {
+      const response = await fetch("https://byte-breakdown1.onrender.com/signup", {
                                     method: "POST", 
                                     body: JSON.stringify(signupInfo),
                                     credentials: "include",
