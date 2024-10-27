@@ -69,7 +69,7 @@ const Home = () => {
           
                             <div className='max-w-[300px] h-[180px]  md:h-44 md:w-80   flex-shrink-0'>
                                  <img className='w-full h-full object-cover rounded-xl' 
-                                      src={'http://localhost:8080/'+post.cover} 
+                                      src={'https://byte-breakdown1.onrender.com/'+post.cover} 
                                       loading="lazy" alt="Lazy loaded image"/>
                             </div>
              

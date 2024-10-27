@@ -64,7 +64,7 @@ const UserPostList = () => {
                       <Link to={`/post/${post._id}`}>       
                             <div className='h-[150px] w-full rounded-xl border-2 border-gray-300' >
                                 <img className='h-[150px] w-full rounded-xl object-center object-cover' 
-                                     src={'http://localhost:8080/'+post.cover}
+                                     src={'https://byte-breakdown1.onrender.com/'+post.cover}
                                      loading="lazy" alt="Lazy loaded image" />
                             </div>
                       </Link> 
