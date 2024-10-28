@@ -60,13 +60,13 @@ const Home = () => {
            userPost && userPost?.map((post) => (
  
 
-                    <div key={post._id} className='mx-10 xxs:mx-16 sm:mx-28 h-auto py-4 shadow-lg hover:shadow-2xl transition-shadow duration-300  
-                                     md:w-fit lg:w-[976px] lg:justify-start   md:h-52 flex items-center justify-center  
+                    <div key={post._id} className='mx-12 h-[395px] xxs:mx-[70px] sm:mx-28 sm:h-auto px-1 py-5 shadow-lg hover:shadow-2xl transition-shadow duration-300  
+                                     md:w-fit lg:w-[976px] lg:justify-start  md:h-52 flex items-start justify-center  
                                      bg-white border-2 rounded-2xl'>
                         
                       <Link to={`/post/${post._id}`}>
 
-                        <div className='flex flex-col gap-3 md:flex-row md:items-start md:gap-10 px-4'>
+                        <div className='flex flex-col gap-4 md:flex-row md:items-start md:gap-10 px-4'>
           
                             <div className='max-w-[300px] h-[180px]  md:h-44 md:w-80   flex-shrink-0'>
                                  <img className='w-full h-full object-cover rounded-xl' 

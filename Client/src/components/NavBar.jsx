@@ -146,7 +146,7 @@ const NavBar = () => {
 
         { 
          openDrawer?
-          <div className=' right-10 left-10 md:hidden  flex items-center justify-center absolute bg-slate-100 rounded-b-xl'>
+          <div className=' right-4 left-4 md:hidden  flex items-center justify-center absolute bg-slate-100 rounded-b-xl'>
             <div className=' text-left top-[72px] md:duration-200    flex flex-col items-center py-8'>
           
                 <ul className='text-black py-2'>

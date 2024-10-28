@@ -60,7 +60,7 @@ const SinglePost = () => {
 
 
            <div>
-      <h1 className='text-3xl md:text-5xl font-bold mb-5 leading-none md:leading-tight'>{onePost.title}</h1>
+              <h1 className='text-3xl md:text-5xl font-bold mb-5 leading-none md:leading-tight'>{onePost.title}</h1>
            </div>
 
            <div className='max-w-[400px] md:max-w-[900px]' >

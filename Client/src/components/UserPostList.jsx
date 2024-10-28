@@ -49,19 +49,19 @@ const UserPostList = () => {
 
   return (
    
-    <div className='mx-10 sm:mx-28 mt-10 flex flex-wrap justify-center md:gap-20 md:space-x-4 space-y-4 md:space-y-0'>
+    <div className='mx-10 sm:mx-28 mt-7 flex flex-wrap justify-center md:gap-20 md:space-x-4 space-y-4 md:space-y-0'>
 
 
         {
           userPost && userPost.map((post) => (
 
             <Link to={`/post/${post._id}`} key={post._id}> 
-                      <div className='xs:h-[360px] xs:w-[260px] md:w-[260px] flex flex-col gap-4 p-5 shadow-lg 
+                      <div className='mx-3 h-[390px] w-[260px] md:w-[260px] flex flex-col gap-4 p-5 shadow-lg 
                                       hover:shadow-2xl transition-shadow duration-300 border-[1px] border-gray-400  
                                       rounded-2xl mt-10'>
 
                       <Link to={`/post/${post._id}`}>       
-                            <div className='h-[150px] w-full rounded-xl border-2 border-gray-300' >
+                            <div className='h-[150px] w-full rounded-xl' >
                                 <img className='h-[150px] w-full rounded-xl object-center object-cover' 
                                      src={'https://byte-breakdown1.onrender.com/'+post.cover}
                                      loading="lazy" alt="Lazy loaded image" />
@@ -71,7 +71,7 @@ const UserPostList = () => {
                       <div className='flex flex-col items-start gap-1 mt-0'>
 
                             <Link to={`/post/${post._id}`}>   
-                              <h1 className='font-semibold text-lg  line-clamp-2 leading-tight'>{post.title}</h1> 
+                              <h1 className='font-bold text-xl  line-clamp-2 leading-snug'>{post.title}</h1> 
                             </Link>
 
                             <div className='mt-2 flex gap-5 text-gray-400 text-sm italic'>
