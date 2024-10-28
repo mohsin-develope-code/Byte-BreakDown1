@@ -49,15 +49,14 @@ const UserPostList = () => {
 
   return (
    
-    <div className='mx-28 flex-nowrap md:space-y-0 md:flex md:flex-wrap md:gap-20 
-                    items-center justify-center mt-12'>
+    <div className='mx-10 sm:mx-28 mt-10 flex flex-wrap justify-center md:gap-20 md:space-x-4 space-y-4 md:space-y-0'>
 
 
         {
           userPost && userPost.map((post) => (
 
             <Link to={`/post/${post._id}`} key={post._id}> 
-                      <div className='h-[360px] w-[260px] md:w-[260px] flex flex-col gap-4 p-5 shadow-lg 
+                      <div className='xs:h-[360px] xs:w-[260px] md:w-[260px] flex flex-col gap-4 p-5 shadow-lg 
                                       hover:shadow-2xl transition-shadow duration-300 border-[1px] border-gray-400  
                                       rounded-2xl mt-10'>
 

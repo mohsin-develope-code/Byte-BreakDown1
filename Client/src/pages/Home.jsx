@@ -58,12 +58,13 @@ const Home = () => {
          {
 
            userPost && userPost?.map((post) => (
+ 
 
-              <Link to={`/post/${post._id}`} key={post._id}> 
-
-                    <div className='mx-28 h-auto py-4 shadow-lg hover:shadow-2xl transition-shadow duration-300  
+                    <div key={post._id} className='mx-10 xxs:mx-16 sm:mx-28 h-auto py-4 shadow-lg hover:shadow-2xl transition-shadow duration-300  
                                      md:w-fit lg:w-[976px] lg:justify-start   md:h-52 flex items-center justify-center  
                                      bg-white border-2 rounded-2xl'>
+                        
+                      <Link to={`/post/${post._id}`}>
 
                         <div className='flex flex-col gap-3 md:flex-row md:items-start md:gap-10 px-4'>
           
@@ -86,9 +87,12 @@ const Home = () => {
              
                             </div>
 
-                        </div>    
+                        </div>   
+
+                      </Link>   
+
                     </div>
-               </Link>
+               
            ))
 
          }   

@@ -52,7 +52,7 @@ const NavBar = () => {
   return (
 
 
-    <nav className=' text-black rounded-lg border-2 border-gray-200  my-3 mx-10'>
+    <nav className=' text-black rounded-lg border-2 border-gray-200  my-3 mx-4 xs:mx-10'>
           
         <div className='flex justify-between items-center px-6 h-14 '>
 

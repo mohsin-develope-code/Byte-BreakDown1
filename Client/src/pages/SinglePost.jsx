@@ -64,7 +64,7 @@ const SinglePost = () => {
            </div>
 
            <div className='max-w-[400px] md:max-w-[900px]' >
-              <img src={`http://localhost:8080/`+ onePost.cover} 
+              <img src={`https://byte-breakdown1.onrender.com/`+ onePost.cover} 
                    className='max-h-[400px]  w-full object-cover' />
 
               <div className='flex gap-3 text-sm md:text-base text-gray-500 mt-5'>
