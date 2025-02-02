@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import downArrow from "assets/downArrow.png"
+import downArrow from "/assets/downArrow.png"
 
 
 let hiddenCat = ["#deepseek",
