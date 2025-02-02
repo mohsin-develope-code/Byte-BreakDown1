@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import downArrow from "assets/downArrow.png"
 
 
 let hiddenCat = ["#deepseek",
@@ -84,20 +85,6 @@ const Category = () => {
       </div>
 
 
-      {/* {  expand ?
-               <div className="w-full h-full px-10 pt-6 flex flex-wrap gap-y-5 gap-x-3">
-                {hiddenCat.map((cats) => (
-                  <div key={cats} 
-                  className="w-fit rounded-xl px-4 py-1 bg-black text-white text-sm font-medium hover:cursor-pointer hover:scale-105 hover:duration-150"
-                  >
-                  {cats}
-                  </div>
-                ))}
-               </div> 
-               : <></>  
-          } */}
-
-
       <div className="w-11/12 mx-auto mt-5 flex items-center justify-center">
 
 
@@ -107,9 +94,9 @@ const Category = () => {
               className="p-2   relative top-5 bg-white hover:cursor-pointer w-fit h-fit rounded-full border-[1px] flex justify-center items-center">
               {
                 !expand?
-                <img src="assets/downArrow.png" alt="#" className="h-5 w-5" />
+                <img src={downArrow} alt="#" className="h-5 w-5" />
                 :
-                <img src="assets/downArrow.png" alt="#" className="h-5 w-5 rotate-180" />
+                <img src={downArrow} alt="#" className="h-5 w-5 rotate-180" />
               }
          </div>
       </div>

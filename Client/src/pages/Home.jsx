@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import date from "date-and-time";
 import { UserContext } from "../contextAPI/AuthContext";
-import Loading from "../components/Loading";
-import LazyLoad from "react-lazyload";
 import Category from "../components/Category";
+
 
 const Home = () => {
   const { loading, setLoading, error, setError } = UserContext();
   const [userPost, setUserPost] = useState();
-
   
   
   
@@ -110,6 +108,8 @@ const Home = () => {
          
          {userPost &&
           userPost?.map((post) => (
+
+            <Link to={`/post/${post._id}`}>
             <div key={post._id}
                  className="w-full sm:min-h-52  rounded-xl hover:shadow-lg hover:cursor-pointer border-2 border-red-600 bg-yellow-100
                           sm:p-4 sm:flex sm:gap-x-8 sm:h-40 sm:flex-row sm:items-center sm:justify-center
@@ -151,6 +151,8 @@ const Home = () => {
               </p>
             </div>
           </div>
+
+          </Link>
           ))
 
 
@@ -180,7 +182,7 @@ const Home = () => {
           {/* Latest Small Card */}
 
           { userPost &&
-            userPost?.slice(userPost.length-1, userPost.length-6).map( (post) => (
+            userPost?.slice(1,5).map( (post) => (
            <div className="flex gap-4 w-fit bg-white rounded-md p-3">
             <img
                src={"https://byte-breakdown1.onrender.com/" + post.cover}
