@@ -16,13 +16,13 @@ const Footer = () => {
                              md:text-sm'>
 
                     <Link to={"/"}>
-                      <li  className='hover:font-bold'>Home</li>
+                      <li  className='hover:scale-105 duration-100'>Home</li>
                     </Link>
                     <Link to={"/about"}>
-                       <li  className='hover:font-bold'>About US</li> 
+                       <li  className='hover:scale-105 duration-100'>About US</li> 
                     </Link>
                     <Link to={"/contact"}
-                       ><li className='hover:font-bold'>Contact US</li> 
+                       ><li className='hover:scale-105 duration-100'>Contact US</li> 
                     </Link>
               </div>
             
