@@ -20,7 +20,7 @@ async function handleUserPost (req, res) {
 
 async function handleAllPost (req, res) {
 
-    const allPost = await Post_Model.find({}).populate('author', 'name');;
+    const allPost = await Post_Model.find({}).populate('author', 'name');
 
     res.status(200).json(allPost);
 }

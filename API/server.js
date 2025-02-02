@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URL)
 
 app.use(CookieParser());
 app.use(express.json());
-app.use('/uploads', express.static(__dirname + '/uploads') )
+app.use('/uploads', express.static(__dirname + 'uploads') )
 app.use(cors({ 
               origin: 'https://byte-breakdown1-client.onrender.com' ,  
               methods: ['GET', 'POST', 'PUT', 'DELETE'],
