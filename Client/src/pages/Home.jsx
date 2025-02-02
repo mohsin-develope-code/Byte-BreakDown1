@@ -66,7 +66,7 @@ const Home = () => {
                             w-[85%] h-[200px]"
                   >
                     <img
-                      src={`https://byte-breakdown1.onrender.com${ post.cover}`}
+                      src={`https://byte-breakdown1.onrender.com/${post?.cover}`}
                       alt="#"
                       className="w-full h-full rounded-xl object-cover object-center"
                     />
@@ -116,7 +116,7 @@ const Home = () => {
             userPost?.slice(1, 5).map((post) => (
               <div className="flex gap-4 w-fit bg-white rounded-md p-3">
                 <img
-                  src={`https://byte-breakdown1.onrender.com${ post.cover}`}
+                  src={`https://byte-breakdown1.onrender.com/${ post?.cover}`}
                   alt="#"
                   className="max-w-24 max-h-24 rounded-md "
                 />
