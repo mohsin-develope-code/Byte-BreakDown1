@@ -16,12 +16,11 @@ const router = express.Router();
 
 
 router.post("/create-post", checkAuth , uploadMiddleware.single('files'), async (req, res) => {
-
-  
+    
     const {originalname, path} = req.file;
     const parts = originalname.split('.');
     const ext = parts[parts.length -1];
-    const newPath = path + '.' + ext
+    const newPath = `${path}.${ext}`
     fs.renameSync(path, newPath);
 
     const {title, summary, content} = req.body;
@@ -30,7 +29,7 @@ router.post("/create-post", checkAuth , uploadMiddleware.single('files'), async 
         title: title,
         summary: summary,
         content: content,
-        cover: newPath,
+        cover: newPath.replace("uploads\\", "uploads/"),
         author: req.user.id,
     })
 
