@@ -4,6 +4,7 @@ import date from 'date-and-time'
 import { UserContext } from '../contextAPI/AuthContext';
 import LazyLoad from 'react-lazyload';
 import Loading from './Loading';
+import { BASE_URL } from '../utils/FetchAPI';
 
 
 
@@ -17,7 +18,7 @@ const UserPostList = () => {
       const fetchPosts = async () => {
   
         try {
-          const response = await fetch("https://byte-breakdown1.onrender.com/user/user-posts", 
+          const response = await fetch(`${BASE_URL}/user/user-posts`, 
                                       { method: "GET", 
                                         credentials:'include',});
           const result = await response.json();
@@ -53,7 +54,7 @@ const UserPostList = () => {
 
 
         {
-          userPost && userPost.map((post) => (
+          userPost?.map((post) => (
 
             <Link to={`/post/${post._id}`} key={post._id}> 
                       <div className='mx-3 h-[390px] w-[260px] md:w-[260px] flex flex-col gap-4 p-5 shadow-lg 
@@ -63,8 +64,8 @@ const UserPostList = () => {
                       <Link to={`/post/${post._id}`}>       
                             <div className='h-[150px] w-full rounded-xl' >
                                 <img className='h-[150px] w-full rounded-xl object-center object-cover' 
-                                     src={'https://byte-breakdown1.onrender.com/'+post.cover}
-                                     loading="lazy" alt="Lazy loaded image" />
+                                     src={'http://localhost:8000/'+post.cover}
+                                     alt="Cover Image" />
                             </div>
                       </Link> 
                        

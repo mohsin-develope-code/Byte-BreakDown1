@@ -2,36 +2,32 @@ import React, { useState } from "react";
 import downArrow from "/assets/downArrow.png"
 
 
-let hiddenCat = ["#deepseek",
+let hiddenCat = [
+  "#deepseek",
   "#Chatgpt",
   "#Next.js",
   "#Redux Toolkit",
   "#Schema Design",
   "#SQL",
   "#Rust",
-   "Rest API"]
+   "Rest API",
+  "#LLM",
+  "#python"]
 
 let categories = [
-  "#tailwind",
+  "#tailwindCss",
   "#web development",
   "#react.js",
   "#node.js",
   "#express.js",
   "#mongodb",
   "#java",
-  "#tailwind",
-  "#react.js",
-  "#node.js",
-  "#express.js",
-  "#mongodb",
-  "#java",
-  "#tailwind",
-  "#web development",
-  "#react.js",
-  "#node.js",
-  "#express.js",
-  "#mongodb",
-  "#java",
+  "#javaScript",
+  "#html",
+  "#css",
+  
+
+  
 ];
 
 
@@ -66,7 +62,7 @@ const Category = () => {
 
 
            
-            {expand ?
+            {!expand ?
             
              hiddenCat.map((cats) => (
                <div key={cats} 
@@ -94,9 +90,9 @@ const Category = () => {
               className="p-2   relative top-5 bg-white hover:cursor-pointer w-fit h-fit rounded-full border-[1px] flex justify-center items-center">
               {
                 !expand?
-                <img src={downArrow} alt="#" className="h-5 w-5" />
-                :
                 <img src={downArrow} alt="#" className="h-5 w-5 rotate-180" />
+                :
+                <img src={downArrow} alt="#" className="h-5 w-5" />
               }
          </div>
       </div>

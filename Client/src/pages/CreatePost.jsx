@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
 import Button from '../components/Button'
 import {useNavigate} from 'react-router-dom'
+import {BASE_URL} from '../utils/FetchAPI';
 
 
 
@@ -11,6 +12,8 @@ const CreatePost = () => {
 
 
   const navigate = useNavigate();
+  const [clicked, setClicked] = useState(false);
+
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
@@ -30,7 +33,7 @@ const CreatePost = () => {
 
 
     try{
-      const response = await fetch("https://byte-breakdown1.onrender.com/user/create-post", {
+      const response = await fetch(`${BASE_URL}/user/create-post`, {
                                    method: "POST", 
                                    credentials: 'include',
                                    body: data,
@@ -39,9 +42,15 @@ const CreatePost = () => {
       const {status} = result
 
       if(status){
+        setClicked(!clicked)
+
+        // setTimeout(() => {
+        //   setErrMessage(message);
+        // }, 2000);
+
         setTimeout(()=> {
           navigate('/dashboard')
-        })
+        }, 3000)
       }
 
 
@@ -94,7 +103,7 @@ const CreatePost = () => {
 
        
          <div className='mt-20'>
-            <Button btnText={"Create Post"}/>
+            <Button btnText={"Create Post"} clicked={clicked}/>
          </div>
        
       </form>

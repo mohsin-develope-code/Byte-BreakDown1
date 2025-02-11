@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import date from 'date-and-time';
 import { UserContext } from '../contextAPI/AuthContext';
 import Loading from '../components/Loading';
+import { BASE_URL } from '../utils/FetchAPI';
 
 
 
@@ -19,7 +20,7 @@ const SinglePost = () => {
       setLoading(true);
 
       try {
-        const response = await fetch(`https://byte-breakdown1.onrender.com/user/post/${id}`,
+        const response = await fetch(`${BASE_URL}/user/post/${id}`,
                                      { method: "GET", 
                                        credentials:'include',
                                      })
@@ -64,7 +65,7 @@ const SinglePost = () => {
            </div>
 
            <div className='max-w-[400px] md:max-w-[900px]' >
-              <img src={`https://byte-breakdown1.onrender.com/`+ onePost.cover} 
+              <img src={`http://localhost:8000/`+ onePost.cover} 
                    className='max-h-[400px]  w-full object-cover' />
 
               <div className='flex gap-3 text-sm md:text-base text-gray-500 mt-5'>

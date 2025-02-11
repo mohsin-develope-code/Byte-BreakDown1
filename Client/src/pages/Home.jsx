@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import date from "date-and-time";
 import { UserContext } from "../contextAPI/AuthContext";
 import Category from "../components/Category";
+import { BASE_URL } from "../utils/FetchAPI";
+
+
+
 
 const Home = () => {
-  const { loading, setLoading, error, setError } = UserContext();
+  const { setLoading, error, setError } = UserContext();
   const [userPost, setUserPost] = useState();
 
   useEffect(() => {
@@ -14,7 +18,7 @@ const Home = () => {
 
       try {
         const response = await fetch(
-          "https://byte-breakdown1.onrender.com/user/all-post",
+          `${BASE_URL}/user/all-post`,
           { method: "GET", credentials: "include" }
         );
         const result = await response.json();
@@ -28,27 +32,24 @@ const Home = () => {
 
     fetchPosts();
   }, []);
+  
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <>
       <Category />
 
       <div
-        className="h-full w-full mt-16 md:flex md:flex-row flex flex-col gap-y-16 md:gap-0
-                      px-9 "
+        className="h-full w-full mt-16 md:flex md:flex-row flex flex-col gap-y-16 md:gap-8
+                   px-9 "
       >
         {/* Card Section */}
         <div
           className="md:w-[70%] md:h-fit md:px-6 md:pb-5 flex flex-col gap-y-9 
-                        w-full px-2 "
+                        w-full px-2"
         >
           {/* Card Layout */}
 
@@ -57,16 +58,16 @@ const Home = () => {
               <Link to={`/post/${post._id}`}>
                 <div
                   key={post._id}
-                  className="w-full sm:min-h-52  rounded-xl hover:shadow-lg hover:cursor-pointer border-2 border-red-600 bg-yellow-100
+                  className="w-full sm:min-h-52  rounded-2xl hover:scale-105 duration-300 hover:cursor-pointer border-2
                           sm:p-4 sm:flex sm:gap-x-8 sm:h-40 sm:flex-row sm:items-center sm:justify-center
                           flex flex-col justify-center items-center gap-y-5 py-4"
                 >
                   <div
                     className=" sm:w-[35%] sm:h-full border-2 rounded-xl border-white
-                            w-[85%] h-[200px]"
+                            w-[90%] h-[200px]"
                   >
                     <img
-                      src={`https://byte-breakdown1.onrender.com/${post?.cover}`}
+                      src={`http://localhost:8000/${post.cover}`}
                       alt="#"
                       className="w-full h-full rounded-xl object-cover object-center"
                     />
@@ -77,16 +78,16 @@ const Home = () => {
                       {post.title}
                     </h1>
 
-                    <div className="flex gap-5">
+                    <div className="flex items-center gap-5">
                       <p className="text-xs xs:text-sm">
                         {" "}
                         {date.format(new Date(post.createdAt), " MMM DD YYYY")}
                       </p>
                       <div className="flex gap-2">
-                        <p className="bg-black rounded-3xl w-fit px-1 xs:px-3 py-[2px] xs:py-1 font-medium text-white text-[10px] xs:text-sm">
+                        <p className="bg-black rounded-3xl w-fit px-2 xs:px-3 py-[2px] md:py-[3px] font-medium text-white text-[10px] xs:text-xs">
                           #tailwind
                         </p>
-                        <p className="bg-black rounded-3xl w-fit px-1 xs:px-3 py-[2px] xs:py-1 font-medium text-white text-[10px] xs:text-sm">
+                        <p className="bg-black rounded-3xl w-fit px-2 xs:px-3 py-[2px] md:py-[3px] font-medium text-white text-[10px] xs:text-xs">
                           #tailwind
                         </p>
                       </div>
@@ -101,6 +102,11 @@ const Home = () => {
             ))}
         </div>
 
+
+
+
+
+
         {/* Latest News Section */}
         <div className="md:w-[30%] h-fit p-5 flex flex-col  gap-6 w-full rounded-xl bg-slate-100">
           {/* Heading */}
@@ -110,19 +116,24 @@ const Home = () => {
             </h2>
           </div>
 
-          {/* Latest Small Card */}
 
+
+
+
+
+          {/* Latest Small Card */}
           {userPost &&
             userPost?.slice(1, 5).map((post) => (
-              <div className="flex gap-4 w-fit bg-white rounded-md p-3">
+              <Link to={`/post/${post._id}`}>
+              <div className="flex gap-4 w-full sm:h-24 bg-white rounded-md p-3">
                 <img
-                  src={`https://byte-breakdown1.onrender.com/${ post?.cover}`}
+                  src={`http://localhost:8000/${post.cover}`}
                   alt="#"
-                  className="max-w-24 max-h-24 rounded-md "
+                  className="max-w-20 max-h-20 rounded-md"
                 />
 
-                <div className="flex flex-col gap-3">
-                  <h1 className="text-sm font-medium line-clamp-3 hover:underline hover:cursor-pointer">
+                <div className="flex flex-col gap-3 w-full">
+                  <h1 className="text-sm font-medium line-clamp-2 hover:underline hover:cursor-pointer">
                     {post.title}
                   </h1>
                   <div className="flex gap-2">
@@ -135,6 +146,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+              </Link>
             ))}
         </div>
       </div>

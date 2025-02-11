@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../contextAPI/AuthContext';
 import { RxCross2 } from "react-icons/rx";
 import Button from './Button'
+import { BASE_URL } from '../utils/FetchAPI';
 
 
 
@@ -23,7 +24,7 @@ const NavBar = () => {
 
 
   const handleLogout = async () => {
-    const response = await fetch('https://byte-breakdown1.onrender.com/logout', {
+    const response = await fetch(`${BASE_URL}/logout`, {
                                   method: "Post",
                                   credentials: 'include',
                                 })
@@ -52,7 +53,7 @@ const NavBar = () => {
   return (
 
 
-    <nav className=' text-black rounded-lg border-2 border-gray-200  my-3 mx-4 xs:mx-10'>
+    <nav className=' text-black rounded-lg border-2 border-gray-200  my-3 mx-4 relative'>
           
         <div className='flex justify-between items-center px-6 h-14 '>
 
@@ -68,44 +69,47 @@ const NavBar = () => {
                 </div>
 
 
-
                <div className='md:display hidden list-none md:flex gap-5'>
        
                    <div className="hidden md:flex list-none gap-6">
                       <Link to={"/"}>
-                        <li className='font-medium hover:text-green-500 cursor-pointer'>Home</li>
+                        <li className='font-medium hover:scale-105 duration-150 cursor-pointer'>Home</li>
                       </Link>
                       <Link to={'/about'}>
-                        <li className='font-medium hover:text-green-500 cursor-pointer'>About us</li>
+                        <li className='font-medium hover:scale-105 duration-150 cursor-pointer'>About </li>
+                      </Link>
+                      <Link to={'/blog'}>
+                        <li className='font-medium hover:scale-105 duration-150 cursor-pointer'>Blog</li>
                       </Link>
                    </div>
-            </div>
+               </div>
 
 
 
          {
           login? 
-          <div className='hidden md:flex gap-3 items-center '> 
+          <div className='hidden md:flex gap-3 items-center'> 
               <p className='font-medium'>Hii, {userName}</p> 
               <CgProfile onClick={()=> setProfile(!profile)} className='h-8 w-8 cursor-pointer relative'/>
 
 
-              <div className={`absolute right  mt-[190px] w-fit px-[43px]  bg-white border border-gray-200 
-                               rounded-md shadow-lg z-10 transition-all duration-300 ease-in-out 
+             
+              <div className={`absolute z-10 right-0 mt-[190px] w-fit px-[10px]  bg-white border border-gray-200 
+                               rounded-md shadow-lg transition-all duration-300 ease-in-out 
                                ${profile ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
 
                   <ul className="list-none p-2">
 
                        <Link to={'/create-post'} 
                              onClick={()=> setProfile(false)}> 
-                            <div className='p-2 hover:bg-gray-100 hover:rounded-xl cursor-pointer'>Create Post</div> 
+                            <div className='py-2 px-4 hover:bg-gray-100 hover:rounded-xl cursor-pointer'>Create Post</div> 
                        </Link>
                        <Link to={'/dashboard'} 
                              onClick={()=> setProfile(false)}> 
-                             <div className='p-2 hover:bg-gray-100 hover:rounded-xl cursor-pointer'>Dashboard</div>  
+                             <div className='py-2 px-4 hover:bg-gray-100 hover:rounded-xl cursor-pointer'>Dashboard</div>  
                        </Link>
                        <div onClick={handleLogout} 
-                           className='p-2 hover:bg-gray-100 hover:rounded-xl cursor-pointer '>Logout</div>
+                           className='py-2 px-4 hover:bg-gray-100 hover:rounded-xl cursor-pointer '>Logout</div>
   
                   </ul>
               </div>       
@@ -146,27 +150,27 @@ const NavBar = () => {
 
         { 
          openDrawer?
-          <div className=' right-4 left-4 md:hidden  flex items-center justify-center absolute bg-slate-100 rounded-b-xl'>
+          <div className=' right-0 left-0 md:hidden  flex items-center justify-center absolute bg-slate-100 rounded-b-xl'>
             <div className=' text-left top-[72px] md:duration-200    flex flex-col items-center py-8'>
           
                 <ul className='text-black py-2'>
 
                   <Link to={"/"} onClick={drawerchange} >
-                       <li className='hover:text-black hover:font-bold hover:duration-100 cursor-pointer py-1'>Home</li>
-                          </Link>
+                       <li className='hover:text-black hover:font-semibold hover:duration-100 cursor-pointer m-2 '>Home</li>
+                  </Link>
 
                   { login?
                     <>
                       <Link to={"/create-post"} 
                             onClick={drawerchange}>  
-                            <li className='hover:text-black hover:font-bold hover:duration-100 cursor-pointer py-1'>Create Post</li> 
+                            <li className='hover:text-black hover:font-semibold hover:duration-100 cursor-pointer m-2'>Create Post</li> 
                       </Link>
                       <Link to={"/dashboard"} 
                             onClick={drawerchange} > 
-                            <li className='hover:text-black hover:font-bold hover:duration-100 cursor-pointer py-1'>Dashboard</li> 
+                            <li className='hover:text-black hover:font-semibold hover:duration-100 cursor-pointer m-2'>Dashboard</li> 
                       </Link>
                       <li onClick={ () => {handleLogout(); drawerchange()}} 
-                          className='hover:text-black hover:font-bold hover:duration-100 cursor-pointer py-1'>Logout</li> 
+                          className='hover:text-black hover:font-semibold hover:duration-100 cursor-pointer m-2'>Logout</li> 
                     </> 
                     : 
                     <>

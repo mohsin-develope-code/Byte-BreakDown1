@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import { UserContext } from '../contextAPI/AuthContext';
+import { BASE_URL } from '../utils/FetchAPI';
 
 
 
@@ -12,6 +13,8 @@ const Login = () => {
   const {setUserName, setLogin} = UserContext();
   const [errMessage, setErrMessage] = useState("");
   const [loginInfo, setLoginInfo] = useState({ email: "", password: ""})
+
+  const [clicked, setClicked] = useState(false);
 
 
   function handleLoginChange (e) {
@@ -33,7 +36,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch("https://byte-breakdown1.onrender.com/login", {
+      const response = await fetch(`${BASE_URL}/login`, {
                                     method: "POST", 
                                     body: JSON.stringify(loginInfo),
                                     credentials: "include",
@@ -44,13 +47,16 @@ const Login = () => {
       const {message, status, user} = result
 
       if(status){
-        setErrMessage(message);
-        setUserName(user);
-        setLogin(true);
+        setClicked(!clicked)
+        setTimeout(() => {
+          setErrMessage(message);
+        }, 2000);
 
         setTimeout(()=> {
           navigate('/dashboard')
-        })
+          setUserName(user);
+          setLogin(true);
+        },3000)
       }
 
       else if(!status) {
@@ -59,7 +65,6 @@ const Login = () => {
     
 
     } catch (error) {
-
       setErrMessage("Internel Error");
       
     }
@@ -96,10 +101,10 @@ const Login = () => {
                        className='w-full border border-black rounded-md px-3 py-2 text-sm '/>
 
                        {
-                         errMessage? <div className='text-sm text-red-500 mt-1'>{errMessage}</div> : <></>
+                         errMessage? <div className='text-sm text-red-500 duration-300 ease-in mt-1'>{errMessage}</div> : <></>
                        }
 
-                <Button btnText={"Login"}/>
+                <Button btnText={"Login"} clicked={clicked}/>
             
             </form>
 

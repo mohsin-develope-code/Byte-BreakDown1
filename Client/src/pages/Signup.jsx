@@ -1,12 +1,15 @@
 import { Link, useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import { useEffect, useState } from "react"
+import { BASE_URL } from "../utils/FetchAPI";
 
 const Signup = () => {
 
   const navigate = useNavigate();
   const [errMessage, setErrMessage] = useState("");
   const [signupInfo, setSignupInfo] = useState({name: "", email: "", password: ""})
+
+  const [clicked, setClicked] = useState(false);
 
 
   function handleSignupChange (e) {
@@ -26,7 +29,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch("https://byte-breakdown1.onrender.com/signup", {
+      const response = await fetch(`${BASE_URL}/signup`, {
                                     method: "POST", 
                                     body: JSON.stringify(signupInfo),
                                     credentials: "include",
@@ -37,10 +40,15 @@ const Signup = () => {
       const {message, status} = result
 
       if(status){
-        setErrMessage(message);
+        setClicked(!clicked)
+
+        setTimeout(() => {
+          setErrMessage(message);
+        }, 2000);
+        
         setTimeout(()=> {
           navigate('/login')
-        }, 2000)
+        }, 3000)
       }
 
       else if(!status) {
