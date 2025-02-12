@@ -1,36 +1,6 @@
 import React, { useState } from "react";
 import downArrow from "/assets/downArrow.png"
-
-
-let hiddenCat = [
-  "#deepseek",
-  "#Chatgpt",
-  "#Next.js",
-  "#Redux Toolkit",
-  "#Schema Design",
-  "#SQL",
-  "#Rust",
-   "Rest API",
-  "#LLM",
-  "#python"]
-
-let categories = [
-  "#tailwindCss",
-  "#web development",
-  "#react.js",
-  "#node.js",
-  "#express.js",
-  "#mongodb",
-  "#java",
-  "#javaScript",
-  "#html",
-  "#css",
-  
-
-  
-];
-
-
+import { hiddenCat, categories } from "../utils/data";
 
 
 
