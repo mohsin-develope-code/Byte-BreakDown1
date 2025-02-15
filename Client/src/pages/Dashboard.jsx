@@ -42,7 +42,6 @@ const Dashboard = () => {
        
         <UserPostList/>
 
-
         <div>
               <div id='guidence' className='animate-pulse hidden transition-all duration-700 ease-in-out ' >
                 <div className='w-0 h-0 border-l-[20px] border-r-[0] border-t-[45px] border-solid border-r-transparent border-l-transparent  border-t-black

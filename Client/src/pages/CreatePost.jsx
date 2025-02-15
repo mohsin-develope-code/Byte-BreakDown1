@@ -7,7 +7,9 @@ import { BASE_URL } from "../utils/FetchAPI";
 import { RxCross2 } from "react-icons/rx";
 import { hiddenCat, categories } from "../utils/data";
 
+
 const categoryList = [...hiddenCat, ...categories];
+
 
 const CreatePost = () => {
   const [categoryTag, setCategoryTag] = useState(null);
@@ -39,21 +41,22 @@ const CreatePost = () => {
 
   const navigate = useNavigate();
   const [clicked, setClicked] = useState(false);
-
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState();
 
+
+
   async function createNewPost(e) {
     e.preventDefault();
-
+    
     const data = new FormData();
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
     data.set("files", files[0]);
-    console.log(files);
+    data.set("tags", tag);
 
     try {
       const response = await fetch(`${BASE_URL}/user/create-post`, {
@@ -79,6 +82,7 @@ const CreatePost = () => {
       return null;
     }
   }
+
 
   return (
     <div className=" flex justify-center my-12">
@@ -174,6 +178,7 @@ const CreatePost = () => {
         <div className="mt-20">
           <Button btnText={"Create Post"} clicked={clicked} />
         </div>
+        
       </form>
     </div>
   );

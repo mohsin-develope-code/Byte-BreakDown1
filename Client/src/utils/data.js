@@ -9,8 +9,11 @@ export const hiddenCat = [
     "#sql",
     "#rust",
     "#rest api",
-    "#nlp",
-    "#python"]
+    "#python",
+    "#css",
+    "#frontend",
+    "#backend",
+    "#nlp"]
   
 export const categories = [
     "#tailwindCss",
@@ -22,7 +25,6 @@ export const categories = [
     "#java",
     "#javaScript",
     "#html",
-    "#css",
     
   
     
