@@ -13,6 +13,10 @@ const postSchema = new mongoose.Schema({
         required: true,
     },
 
+    tags: {
+        type: [String],
+    },
+
     content : {
         type: String,
         required: true,

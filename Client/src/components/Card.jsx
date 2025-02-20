@@ -1,5 +1,7 @@
 import date from "date-and-time";
 import React, { useState, useRef, useEffect } from "react";
+import { BASE_URL } from "../utils/FetchAPI";
+
 
 const Card = ({ post }) => {
   const [visibleTags, setVisibleTags] = useState(post.tags);
@@ -52,7 +54,7 @@ const Card = ({ post }) => {
                                 w-[90%] h-[200px]"
       >
         <img
-          src={`http://localhost:8000/${post.cover}`}
+          src={`${BASE_URL}/${post.cover}`}
           alt="#"
           className="w-full h-full rounded-xl object-cover object-center"
         />

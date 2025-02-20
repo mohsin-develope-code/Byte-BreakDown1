@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contextAPI/AuthContext";
 import Category from "../components/Category";
@@ -7,6 +7,8 @@ import { IoSearchSharp } from "react-icons/io5";
 import Card from "../components/Card";
 
 const Home = () => {
+
+  const postRef = useRef(null);
   const { setLoading, error, setError } = UserContext();
   const [userPost, setUserPost] = useState();
 
@@ -14,6 +16,11 @@ const Home = () => {
   const [searchPost, setSearchPost] = useState();
 
   function categoryTags(catTag) {
+
+    if(postRef.current){
+      postRef.current.scrollIntoView({behavior: 'smooth'})
+    }
+
     const filterByTags = userPost.filter((post) =>
       post.tags?.some((tag) => tag.toLowerCase().includes(catTag.toLowerCase()))
     );
@@ -22,6 +29,11 @@ const Home = () => {
   }
 
   function handlePostSearch() {
+
+    if(postRef.current){
+      postRef.current.scrollIntoView({behavior: 'smooth'})
+    }
+
     const filterByPostSearch = userPost.filter((post) =>
       post.title.toLowerCase().includes(searchVal.toLowerCase())
     );
@@ -66,6 +78,7 @@ const Home = () => {
     return <div>Error: {error}</div>;
   }
 
+
   return (
     <>
       {/* Searching Post  */}
@@ -75,7 +88,10 @@ const Home = () => {
       >
         <div className="flex-shrink-0 max-w-[500px] w-full flex flex-col gap-y-3">
           <h1 className="text-base sm:text-lg md:text-xl font-semibold px-3">
-            Dive into the World of Tech Trends
+            Dive into the World of 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-pink-600 to-purple-600">
+             {" "}Tech Trends
+            </span>
           </h1>
           <div className="flex items-center">
             <input
@@ -102,10 +118,12 @@ const Home = () => {
         </div>
       </div>
 
+
       {/* Tags Category */}
       <Category tagPostShown={categoryTags} />
 
       <div
+        ref={postRef}
         className="h-full w-full mt-20 md:flex md:flex-row flex flex-col gap-y-16 md:gap-8
                    px-9 "
       >
@@ -114,6 +132,8 @@ const Home = () => {
           className="md:w-[70%] md:h-fit md:px-6 md:pb-5 flex flex-col gap-y-9 
                         w-full xs:px-10"
         >
+
+          
           {searchPost?.length == 0 ? (
             <div className="text-center text-3xl font-semibold mt-10">
               No Post
@@ -122,7 +142,7 @@ const Home = () => {
             searchPost &&
             searchPost?.map((post) => (
               <Link to={`/post/${post._id}`}>
-                <Card post={post} />
+                <Card key={post._id} post={post} />
               </Link>
             ))
           )}
@@ -141,9 +161,9 @@ const Home = () => {
           {userPost &&
             userPost?.slice(1, 5).map((post) => (
               <Link to={`/post/${post._id}`}>
-                <div className="flex gap-4 w-full sm:h-24 bg-white rounded-md p-3 overflow-hidden">
+                <div key={post._id} className="flex gap-4 w-full sm:h-24 bg-white rounded-md p-3 overflow-hidden">
                   <img
-                    src={`http://localhost:8000/${post.cover}`}
+                    src={`${BASE_URL}/${post.cover}`}
                     alt="#"
                     className="max-w-20 max-h-20 rounded-md"
                   />

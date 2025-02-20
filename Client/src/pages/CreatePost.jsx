@@ -6,12 +6,28 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/FetchAPI";
 import { RxCross2 } from "react-icons/rx";
 import { hiddenCat, categories } from "../utils/data";
+import ImageGenerator from "../components/ImageGenerator";
 
 
 const categoryList = [...hiddenCat, ...categories];
 
 
 const CreatePost = () => {
+ 
+  const [showAIGenerator, setShowAIGenerator] = useState(false);
+
+
+  function handleImageGenerate (result) {
+    console.log(result)
+    if(result){
+      setShowAIGenerator(true);
+    }
+    else {
+      setShowAIGenerator(false);
+    }
+  }
+
+
   const [categoryTag, setCategoryTag] = useState(null);
   const [searchVal, setSearchVal] = useState("");
   const [tag, setTag] = useState([]);
@@ -34,6 +50,8 @@ const CreatePost = () => {
     setTag((prevTag) => [...prevTag, catTag]);
     setSearchVal(null);
   }
+
+  // console.log(tag);
 
   function deleteTags(tags) {
     setTag(tag?.filter((item) => item !== tags));
@@ -85,10 +103,16 @@ const CreatePost = () => {
 
 
   return (
-    <div className=" flex justify-center my-12">
+
+    <>    
+
+    <div className=" flex justify-center ">
+
+      { showAIGenerator && <ImageGenerator handleImageGenerate={handleImageGenerate} setFiles={setFiles} /> }
+
       <form
         onSubmit={createNewPost}
-        className="flex flex-col gap-5 justify-center text-center w-full md:w-[900px]"
+        className="flex flex-col gap-5 justify-center py-10 text-center w-full md:w-[900px]"
       >
         <input
           type="text"
@@ -104,17 +128,37 @@ const CreatePost = () => {
           className="mx-10 md:mx-0  border px-2 py-1 text-base rounded-md border-gray-400"
         />
 
-        <div className="mx-10 md:mx-0  md:w-full flex justify-start items-center gap-3">
-          <input
-            type="file"
-            onChange={(e) => setFiles(e.target.files)}
-            placeholder="Image Upload"
-            className="border px-2 py-1 text-sm rounded-md border-gray-400 "
-          />
-          <span className="text-[8px] md:text-base font-semibold">
-            Upload Images <span className="text-red-600">*</span>
-          </span>
+
+        <div className=" mx-10 md:mx-0  md:w-full flex flex-col items-center justify-start gap-y-2 py-4   
+                         md:flex-row md:items-center md:justify-between bg-slate-100 md:py-8 md:px-6 rounded-xl">
+
+           <div className="flex flex-col md:flex-row md:justify-start md:items-center gap-3">
+              <input
+                  type="file"
+                  onChange={(e) => setFiles(e.target.files)}
+                  placeholder="Image Upload"
+                  className="border px-2 py-1 text-sm rounded-md border-black bg-white "
+              />
+              <span className="text-sm md:text-base font-semibold">
+               Upload Image <span className="text-red-600">*</span>
+              </span>
+           </div>
+
+           <div className="py-3">OR</div>
+
+           <div className="md:pr-7">
+
+            <button className="px-3 py-2 bg-black text-white text-sm md:text-base font-medium rounded-lg hover:scale-105 duration-300"
+                    type="submit"
+                    onClick={() => handleImageGenerate ("true")}        
+            >
+              Generate AI Image
+            </button>
+
+           </div>
+
         </div>
+
 
         <div
           className="mx-10 md:mx-0 md:flex md:flex-row md:items-center md:justify-start  md:w-full 
@@ -181,6 +225,8 @@ const CreatePost = () => {
         
       </form>
     </div>
+
+    </>
   );
 };
 

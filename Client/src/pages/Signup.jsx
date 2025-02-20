@@ -102,7 +102,7 @@ const Signup = () => {
                          errMessage? <div className='text-sm text-red-500 mt-1'>{errMessage}</div> : <></>
                        }
 
-                <Button btnText={"Sign up"}/>
+                <Button btnText={"Sign up"} clicked={clicked}/>
             
             </form>
 

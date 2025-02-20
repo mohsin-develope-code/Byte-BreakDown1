@@ -16,20 +16,24 @@ const router = express.Router();
 
 
 router.post("/create-post", checkAuth , uploadMiddleware.single('files'), async (req, res) => {
-    
+
+  
     const {originalname, path} = req.file;
     const parts = originalname.split('.');
     const ext = parts[parts.length -1];
-    const newPath = `${path}.${ext}`
+    const newPath = path + '.' + ext
     fs.renameSync(path, newPath);
 
-    const {title, summary, content} = req.body;
+    const {title, summary, content, tags} = req.body;
+
+    const tagsArray = tags.split(",").map(tag => tag.trim());
 
     const userPost = await Post_Model.create({
         title: title,
         summary: summary,
         content: content,
-        cover: newPath.replace("uploads\\", "uploads/"),
+        tags: tagsArray,
+        cover: newPath,
         author: req.user.id,
     })
 
@@ -37,7 +41,8 @@ router.post("/create-post", checkAuth , uploadMiddleware.single('files'), async 
 
     res.status(201)
        .json({ message: " Post Successfully Created", 
-               status: true});
+               status: true,
+               userPost});
     
 });
 

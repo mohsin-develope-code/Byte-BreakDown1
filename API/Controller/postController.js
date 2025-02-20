@@ -8,7 +8,7 @@ async function handleUserPost (req, res) {
 
         const id = req.user.id;  
     
-        const userPost = await Post_Model.find({author: id}).populate("author", "name");
+        const userPost = await Post_Model.find({author: id}).populate("author", "name").sort({createdAt: -1});
         
         res.status(200).json(userPost)
     
@@ -20,7 +20,7 @@ async function handleUserPost (req, res) {
 
 async function handleAllPost (req, res) {
 
-    const allPost = await Post_Model.find({}).populate('author', 'name');
+    const allPost = await Post_Model.find({}).populate('author', 'name').sort({createdAt: -1}) ;
 
     res.status(200).json(allPost);
 }

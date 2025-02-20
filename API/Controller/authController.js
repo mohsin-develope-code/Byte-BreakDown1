@@ -51,7 +51,11 @@ async function handleUserLogin (req, res) {
         
         const {email, password} = req.body;
 
+        console.log({email, password})
+        console.log("============================")
+
         const checkUser = await User_Model.findOne({email});
+        console.log(checkUser)
         if(!checkUser){
             return res.status(404)
                    .json({ message: "Invalid User Details", 
@@ -60,6 +64,7 @@ async function handleUserLogin (req, res) {
 
 
         const isPassEqual = await bcrypt.compare(password, checkUser.password);
+        console.log(isPassEqual)
         if(!isPassEqual){
             return res.status(400)
                       .json({ message: "Incorrect Password", 

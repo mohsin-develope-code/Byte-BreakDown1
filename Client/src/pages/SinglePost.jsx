@@ -55,10 +55,10 @@ const SinglePost = () => {
           </div>
         </div>
 
-        <div className="w-full h-auto overflow-hidden px-10">
+        <div className="max-w-[800px] w-full max-h-[450px] h-full overflow-hidden px-5 sm:px-10">
           <img
-            src={`http://localhost:8000/` + onePost.cover}
-            className="w-full h-auto   object-cover"
+            src={`${BASE_URL}/` + onePost.cover}
+            className="w-full h-full   object-cover object-center"
           />
         </div>
 

@@ -10,6 +10,7 @@ import SinglePost from '../pages/SinglePost'
 import { UserContext } from '../contextAPI/AuthContext'
 import AboutUs from '../pages/AboutUs'
 import ContactUs from '../pages/ContactUs'
+import ImageGenerator from '../components/ImageGenerator'
 
 
 
@@ -51,7 +52,7 @@ const Routers = () => {
 
             <Route path='/dashboard' element={<PrivateRoute element={<Dashboard/>}/>}  />
 
-            <Route path='/create-post' element={<PrivateRoute element={<CreatePost/>}/>} />
+            <Route path='create-post' element={<PrivateRoute element={<CreatePost/>}/>} />            
 
             <Route path='/post/:id' element={<SinglePost/>} />
 
