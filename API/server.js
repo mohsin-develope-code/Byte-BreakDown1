@@ -5,6 +5,7 @@ const cors = require('cors');
 const CookieParser = require("cookie-parser");
 const userRoutes = require("./Routes/authRoutes");
 const postRoutes = require("./Routes/postRoutes")
+const path = require("path")
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -18,7 +19,7 @@ mongoose.connect(process.env.MONGO_URL)
 
 app.use(CookieParser());
 app.use(express.json());
-app.use('/uploads', express.static(__dirname + '/uploads') )
+app.use('/uploads', express.static(path.join(__dirname + 'uploads')) )
 app.use(cors({ 
               origin: 'https://byte-breakdown.onrender.com',
               methods: ['GET', 'POST', 'PUT', 'DELETE'],
