@@ -4,6 +4,7 @@ import date from "date-and-time";
 import { UserContext } from "../contextAPI/AuthContext";
 import Loading from "./Loading";
 import { BASE_URL } from "../utils/FetchAPI";
+import NoPost from "../../assets/no-auth-post.webp";
 
 const UserPostList = () => {
   const { error, setError } = UserContext();
@@ -38,7 +39,7 @@ const UserPostList = () => {
       {userPost?.length == 0 ? (
         <div className="flex flex-col items-center justify-center mt-9">
           <div className="text-2xl font-semibold">No Post</div>
-          <img src="assets/no-auth-post.webp" alt="#" />
+          <img src={NoPost} alt="#NO POST" />
         </div>
       ) : (
         userPost?.map((post) => (
