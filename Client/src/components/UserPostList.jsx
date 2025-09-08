@@ -53,7 +53,7 @@ const UserPostList = () => {
                 <div className="h-[150px] w-full rounded-xl">
                   <img
                     className="h-[150px] w-full rounded-xl object-center object-cover"
-                    src={ `${BASE_URL}/`+ post.cover}
+                    src={`${BASE_URL}/`+post.cover}
                     alt="Cover Image"
                   />
                 </div>
